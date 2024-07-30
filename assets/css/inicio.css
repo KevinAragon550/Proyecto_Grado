@@ -1,0 +1,514 @@
+/*Permite utilizar una abreviatura a los datos ingresados*/
+:root{
+    --verde:#00A149;
+    --blanco:#fff;
+    --rojo:#881014;
+    --oscuro:#000;
+    --titulos:'Arima Madurai',cursive;
+    --parrafos:'Mulish', sans-serif;
+}
+
+/*Ajustes generales de pagina web*/
+html {
+    box-sizing: border-box; /* Establece que el tamaño total de un elemento (su ancho y alto)
+    incluye el padding y el borde, pero no incluye el margen */
+    /* 1rem = 10px */
+    font-size: 62.5%; /* Tamaño base de la fuente para todo el documento, convierte 1rem en 10px */
+}
+
+body {
+    font-size: 1.6rem; /* Tamaño de fuente de 16px para el cuerpo del documento */
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal de contenido dentro del elemento body */
+}
+
+*, *::after, *::before {
+    box-sizing: inherit; /* Hereda el valor de box-sizing del elemento padre para todos los elementos,
+    incluidos los pseudo-elementos ::after y ::before */
+}
+
+
+
+
+/*globales*/
+.contenedor {
+    max-width: 120rem; /* Establece un ancho máximo de 120 rem */
+    margin: 0 auto; /* Centra horizontalmente el elemento */
+    width: 95%; /* Establece que el ancho sea el 95% del contenedor padre */
+}
+
+h1, h2 {
+    font-family: var(--titulos); /* Aplica la fuente definida por la variable titulos a los títulos h1 y h2 */
+}
+
+h3, p, a {
+    font-family: var(--parrafos); /* Aplica la fuente definida por la variable parrafos a los títulos h3, párrafos p y enlaces a */
+}
+
+img {
+    max-width: 100%; /* Ajusta la imagen para que su ancho máximo sea el 100% del contenedor que la contiene */
+}
+
+
+/*Son los colores del logo*/
+.verde{
+    color: var(--verde);
+}
+
+.rojo{
+    color: var(--rojo);
+}
+
+.ocultar{
+    display: none; /*Oculta los elementos de la clase ocultar*/
+}
+
+.btn-cerrar {
+    font-size: 3rem; /* Tamaño de fuente de 3 rem para el botón */
+    font-weight: bold; /* Texto en negrita */
+    color: var(--blanco); /* Color del texto establecido por la variable blanco */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Alineado en la parte superior del contenedor padre */
+    right: 50px; /* Alineado a 50px desde el borde derecho del contenedor padre */
+    user-select: none; /* Deshabilita la selección de texto por parte del usuario */
+}
+
+.pantalla-completa {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Alineado en la parte superior del contenedor padre */
+    left: 0; /* Alineado en la parte izquierda del contenedor padre */
+    bottom: 0; /* Alineado en la parte inferior del contenedor padre */
+    right: 0; /* Alineado en la parte derecha del contenedor padre */
+    background-color: rgba(0,0,0,.5); /* Fondo semitransparente negro */
+    z-index: 4; /* Índice Z para superponer sobre otros elementos */
+}
+
+/* Animacion para el desplazamiento del menu */
+@keyframes desplazamiento {
+    0% {
+        transform: translateX(100%); /* Transformación inicial: desplaza el elemento horizontalmente al 100% hacia la derecha */
+    }
+    100% {
+        transform: translateX(0); /* Transformación final: devuelve el elemento a su posición original (0% de desplazamiento horizontal) */
+    }
+}
+
+.btn-cerrar:hover{
+    cursor: pointer;/*Define un estilo para cuando el cursor se situe sobre el boton cerrar*/
+}
+
+.btn {
+    text-decoration: none; /* Elimina el subrayado del texto */
+    color: var(--blanco); /* Color del texto blanco definido por la variable blanco */
+    font-size: 2rem; /* Tamaño de fuente de 2 rem */
+    text-transform: capitalize; /* Transforma el texto a capitalizado */
+    padding: 1rem 5rem; /* Relleno de 1 rem arriba y abajo, 5 rem a la izquierda y derecha */
+    border-radius: 5px; /* Esquinas redondeadas */
+    transition: all .3s ease-in-out; /* Transición suave de todas las propiedades */
+}
+
+@media (min-width: 768px) {
+    .btn {
+        font-size: 2.2rem; /* Aumenta el tamaño de fuente a 2.2 rem en pantallas más grandes */
+    }
+}
+
+/* Establece un borde sólido blanco de 3px de ancho para elementos con la clase bordes */
+.bordes {
+    border: 3px solid var(--blanco);
+}
+
+@media (min-width: 768px) {
+    /* Aumenta el ancho del borde a 4px en pantallas más grandes */
+    .bordes {
+        border: 4px solid var(--blanco);
+    }
+}
+
+/* Define estilos cuando el cursor se sitúa sobre elementos con la clase bordes */
+.bordes:hover {
+    color: var(--verde); /* Cambia el color del texto a verde */
+    background-color: var(--blanco); /* Cambia el color de fondo a blanco */
+}
+
+/* Estilos para botones con la clase btn-rojo */
+.btn-rojo {
+    background-color: var(--rojo); /* Color de fondo rojo definido por la variable rojo */
+    font-weight: bold; /* Texto en negrita */
+    display: inline-block; /* Tipo de visualización en línea con bloque */
+    margin-top: 2rem; /* Margen superior de 2 rem */
+    margin-bottom: 2rem; /* Margen inferior de 2 rem */
+}
+
+/* Estilos para botones con la clase btn-verde */
+.btn-verde {
+    background-color: var(--verde); /* Color de fondo verde definido por la variable verde */
+    border: none; /* Elimina el borde */
+    display: inline-block; /* Tipo de visualización en línea con bloque */
+    margin-bottom: 2rem; /* Margen inferior de 2 rem */
+    font-family: var(--parrafos); /* Fuente definida por la variable parrafos */
+}
+
+/* Estilos al pasar el cursor sobre botones con la clase btn-verde */
+.btn-verde:hover {
+    background-color: var(--rojo); /* Cambia el color de fondo a rojo al pasar el cursor */
+}
+
+
+/*encabezado*/
+.contenedor-navegacion{
+    background-color: var(--oscuro); /*Fondo del contenedor*/
+    z-index: 5; /*un índice Z para superponer sobre otros elementos*/
+    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
+    left: 0; /* Posicionamos la cabecera al lado izquierdo */
+    top: 0; /* Posicionamos la cabecera pegada arriba */
+    position: fixed; /* Hacemos que la cabecera tenga una posición*/
+}
+
+.contenido-navegacion{
+    display: flex; /* Utiliza flexbox para organizar los elementos internos */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    justify-content: space-between; /* Distribuye los elementos uniformemente a lo largo del eje
+    principal, dejando espacio entre ellos */
+}
+
+.logo h2, .navegacion a {
+    color: var(--blanco); /* Color blanco para los títulos dentro del logo y los enlaces de navegación */  
+}
+
+.logo h2{
+    font-size: 3rem; /* Tamaño de fuente de 3rem para los títulos h2 dentro del logo */
+}
+
+/*Estilos de dispositivos moviles*/
+.navegacion a{
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-size: 2.2rem; /* Tamaño de fuente de 2.2rem para los enlaces de navegación */
+    padding: 1.5rem; /* Relleno de 1.5rem en todas las direcciones */
+    padding-left: 4rem; /* Relleno adicional a la izquierda de 4rem */
+    display: block; /* Los enlaces son elementos de bloque */
+    transition: color .3s ease-in-out; /* Transición suave de color durante 0.3 segundos */
+    text-align: center; /* Alineación centrada del texto dentro de los enlaces */
+}
+@media (min-width: 768px) {
+    .navegacion a {
+        text-align: left; /* Alineación del texto a la izquierda para los enlaces de navegación */
+    }
+}
+
+/* Aplica color verde al pasar el cursor sobre todos los enlaces dentro de la navegación */
+.navegacion a:hover {
+    color: var(--verde);
+}
+
+/* Aplica margen superior de 5rem solo al primer enlace dentro de la navegación */
+.navegacion a:first-of-type {
+    margin-top: 5rem;
+}
+
+/* Estilos para el menú de navegación desplegable */
+.navegacion {
+    position: absolute; /* Posición absoluta con respecto al primer contenedor con posición relativa */
+    top: 0; /* Alineación en la parte superior del contenedor */
+    right: 0; /* Alineación en el borde derecho del contenedor */
+    bottom: 0; /* Ocupa toda la altura del contenedor */
+    height: 100vh; /* Altura del 100% del viewport */
+    width: 40rem; /* Ancho fijo de 40rem */
+    padding: 3rem 4rem; /* Relleno de 3rem arriba y abajo, 4rem a la izquierda y derecha */
+    background-color: var(--oscuro); /* Color de fondo oscuro definido por variable */
+    animation: desplazamiento .5s ease-in-out; /* Animación de desplazamiento con duración de 0.5 segundos */
+}
+
+/* Cambia el cursor a un puntero al pasar el ratón sobre el elemento con clase hamburguesa */
+.hamburguesa:hover {
+    cursor: pointer;
+}
+
+/* Estilos para los elementos span dentro de hamburguesa */
+.hamburguesa span {
+    background-color: var(--blanco); /* Color de fondo blanco */
+    display: block; /* Los elementos son de tipo bloque */
+    width: 5rem; /* Ancho fijo de 5rem */
+    height: .5rem; /* Altura de 0.5rem */
+    margin-bottom: .5rem; /* Margen inferior de 0.5rem */
+}
+
+
+
+/*video*/
+.contenido-header {
+    position: relative; /* Establece la posición relativa para el contenedor */
+}
+
+.contenido-header::before {
+    content: ''; /* Genera un pseudo-elemento antes del contenido del contenedor */
+    position: absolute; /* Posición absoluta con respecto al contenedor padre */
+    top: 0; /* Alineación en la parte superior del contenedor */
+    left: 0; /* Alineación en el borde izquierdo del contenedor */
+    right: 0; /* Alineación en el borde derecho del contenedor */
+    bottom: 0; /* Alineación en el borde inferior del contenedor */
+    background-color: rgba(0,0,0,.5); /* Color de fondo semi-transparente negro */
+}
+
+.texto-encabezado {
+    position: absolute; /* Posición absoluta con respecto al contenedor padre */
+    z-index: 2; /* Capa de profundidad para colocar encima del fondo pseudo-elemento */
+    width: 100%; /* Ancho del 100% del contenedor */
+    height: 80%; /* Altura del 80% del contenedor */
+    display: flex; /* Utiliza flexbox para organizar los elementos internos */
+    flex-direction: column; /* Organiza los elementos en columnas */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+}
+
+.texto-encabezado h2 {
+    color: var(--blanco); /* Color blanco para el texto del título h2 */
+    font-size: 4rem; /* Tamaño de fuente de 4rem para el título h2 */
+}
+@media (min-width: 768px) {
+    .texto-encabezado h2 {
+        font-size: 8rem; /* En dispositivos con un ancho mínimo de 768px, aumenta el tamaño de fuente
+        del título h2 a 8rem */
+    }
+}
+
+video {
+    width: 100%; /* Ancho del 100% del contenedor */
+    height: 100%; /* Altura del 100% del contenedor */
+}
+
+
+
+/*sobre nosotros*/
+.contenedor-nosotros {
+    padding-top: 5rem; /* Relleno superior de 5rem para el contenedor */
+}
+@media (min-width: 768px) {
+    .contenedor-nosotros {
+        display: flex; /* Utiliza flexbox para organizar los elementos internos */
+        justify-content: space-between; /* Distribuye los elementos uniformemente a lo largo del eje principal */
+    }
+}
+
+.texto-nosotros, .imagenes-nosotros {
+    flex: 0 0 calc(50% - 1rem); /* Flexibilidad de 50% menos 1rem de margen para los elementos */
+}
+
+.texto-nosotros .bienvenida {
+    font-size: 4rem; /* Tamaño de fuente de 4rem para el texto de bienvenida */
+    color: var(--verde); /* Color verde definido por variable */
+    text-align: center; /* Alineación centrada para el texto de bienvenida */
+}
+@media (min-width: 768px) {
+    .texto-nosotros .bienvenida {
+        text-align: left; /* Alineación a la izquierda para el texto de bienvenida en pantallas grandes */
+    }
+}
+
+.texto-nosotros h1 {
+    font-size: 5rem; /* Tamaño de fuente de 5rem para el título h1 */
+    text-align: center; /* Alineación centrada para el título h1 */
+}
+@media (min-width: 768px) {
+    .texto-nosotros h1 {
+        text-align: left; /* Alineación a la izquierda para el título h1 en pantallas grandes */
+    }
+}
+
+.texto-nosotros p {
+    font-size: 2rem; /* Tamaño de fuente de 2rem para los párrafos */
+    text-align: center; /* Alineación centrada para los párrafos */
+}
+@media (min-width: 768px) {
+    .texto-nosotros p {
+        text-align: left; /* Alineación a la izquierda para los párrafos en pantallas grandes */
+    }
+}
+
+.imagenes-nosotros {
+    display: flex; /* Utiliza flexbox para organizar las imágenes */
+    justify-content: space-between; /* Distribuye las imágenes uniformemente a lo largo del eje principal*/
+}
+
+.imagenes-nosotros img {
+    border-radius: 5px; /* Borde redondeado con radio de 5px para las imágenes */
+}
+
+.imagen1, .imagenes2 {
+    flex: 0 0 calc(50% - 1rem); /* Flexibilidad de 50% menos 1rem de margen para las secciones de
+    imágenes */
+}
+
+.imagenes2 img {
+    margin-bottom: 1rem; /* Margen inferior de 1rem para las imágenes en la sección imágenes2 */
+}
+
+.menu {
+    padding-top: 4rem; /* Relleno superior de 4rem para la sección de menú */
+}
+
+
+
+/*seccion de administracion*/
+.administracion h2 {
+    background-color: var(--rojo); /* Color de fondo rojo definido por variable */
+    display: inline-block; /* Mostrar como bloque en línea */
+    padding: 1rem 3rem; /* Relleno de 1rem arriba y abajo, 3rem a la izquierda y derecha */
+    color: var(--blanco); /* Color de texto blanco definido por variable */
+    font-size: 4rem; /* Tamaño de fuente de 4rem para el título h2 */
+}
+@media (min-width: 768px) {
+    .contenido-administracion {
+        display: flex; /* Utiliza flexbox para organizar los elementos internos */
+        justify-content: space-between; /* Distribuye los elementos uniformemente a lo largo del eje
+        principal */
+    }
+}
+
+.texto-administracion, .imagen-administracion {
+    flex: 0 0 calc(50% - 1rem); /* Flexibilidad de 50% menos 1rem de margen para los elementos */
+}
+
+.texto-administracion h3 {
+    font-size: 3rem; /* Tamaño de fuente de 3rem para los subtítulos h3 */
+}
+
+.texto-administracion p {
+    font-size: 2rem; /* Tamaño de fuente de 2rem para los párrafos */
+}
+
+
+
+/*formulario contacto*/
+.formulario-contacto {
+    padding-top: 5rem; /* Relleno superior de 5rem para el formulario de contacto */
+}
+@media (min-width: 768px) {
+    .formulario-contacto {
+        display: flex; /* Utiliza flexbox para organizar los elementos internos en pantallas grandes */
+    }
+}
+
+.informacion-contacto {
+    display: flex; /* Utiliza flexbox para organizar los elementos internos */
+    flex-direction: column; /* Organiza los elementos en columnas */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.informacion-contacto,
+.formulario {
+    flex: 0 0 calc(50% - 1rem); /* Flexibilidad de 50% menos 1rem de margen para los elementos */
+}
+
+.informacion-contacto {
+    background-color: var(--oscuro); /* Color de fondo oscuro definido por variable */
+    padding: 2rem; /* Relleno de 2rem en todas las direcciones */
+}
+
+.informacion-contacto h3,
+.informacion-contacto p,
+.redes-sociales i {
+    color: var(--blanco); /* Color blanco para los títulos h3, párrafos y iconos de redes sociales */
+}
+
+.informacion-contacto h3 {
+    font-size: 4rem; /* Tamaño de fuente de 4rem para los títulos h3 */
+    font-family: var(--titulos); /* Familia de fuente definida por variable */
+}
+
+.informacion-contacto p {
+    font-size: 2.2rem; /* Tamaño de fuente de 2.2rem para los párrafos */
+}
+
+.informacion-contacto i {
+    margin-right: 1rem; /* Margen derecho de 1rem para los iconos de redes sociales */
+}
+
+.redes-sociales {
+    font-size: 3rem; /* Tamaño de fuente de 3rem para los iconos de redes sociales */
+}
+
+.formulario {
+    padding: 5rem; /* Relleno de 5rem en todas las direcciones para el formulario */
+}
+
+.input-formulario label {
+    display: block; /* Muestra los elementos de etiqueta como bloque */
+    font-size: 2rem; /* Tamaño de fuente de 2rem para las etiquetas */
+    font-family: var(--parrafos); /* Familia de fuente definida por variable */
+    margin-bottom: 1.5rem; /* Margen inferior de 1.5rem para las etiquetas */
+}
+
+.input-formulario input,
+.input-formulario textarea {
+    width: 100%; /* Ancho del 100% para los campos de entrada y áreas de texto */
+    padding: 1rem 1.6rem; /* Relleno de 1rem arriba y abajo, 1.6rem a la izquierda y derecha */
+    border: 1px solid #e1e1e1; /* Borde de 1px sólido con color gris claro */
+    border-radius: 5px; /* Borde redondeado con radio de 5px */
+    outline: none; /* Elimina el contorno al recibir el foco */
+    font-family: var(--parrafos); /* Familia de fuente definida por variable */
+}
+
+.input-formulario textarea {
+    height: 20rem; /* Altura fija de 20rem para las áreas de texto */
+    resize: none; /* Deshabilita la redimensión de las áreas de texto */
+}
+
+.pie-pagina {
+    margin-top: 5rem; /* Margen superior de 5rem para el pie de página */
+    background-color: rgb(20, 20, 20); /* Color de fondo oscuro */
+    padding: 5rem; /* Relleno de 5rem en todas las direcciones */
+}
+@media (min-width: 768px) {
+    .contenedor-piepagina {
+        display: flex; /* Utiliza flexbox para organizar los elementos internos en pantallas grandes */
+        justify-content: space-between; /* Distribuye los elementos uniformemente a lo largo del eje principal */
+    }
+}
+
+.info {
+    flex: 0 0 calc(25% - 1rem); /* Flexibilidad de 25% menos 1rem de margen para las secciones de información */
+    margin-bottom: 2rem; /* Margen inferior de 2rem para las secciones de información */
+}
+
+.info h3,
+.info p {
+    color: var(--blanco); /* Color blanco para los títulos h3 y párrafos */
+    text-align: center; /* Alineación centrada para los títulos h3 y párrafos */
+}
+
+.info h3 {
+    font-size: 2.2rem; /* Tamaño de fuente de 2.2rem para los títulos h3 */
+}
+
+.info p {
+    font-size: 1.8rem; /* Tamaño de fuente de 1.8rem para los párrafos */
+}
+
+.redes-pie {
+    text-align: center; /* Alineación centrada para los elementos de redes sociales en el pie de página */
+}
+
+.info input[type="email"] {
+    font-family: var(--parrafos); /* Familia de fuente definida por variable */
+    display: inline-block; /* Mostrar como bloque en línea */
+    margin-bottom: 1rem; /* Margen inferior de 1rem para los campos de entrada de tipo email */
+    padding: 1rem; /* Relleno de 1rem en todas las direcciones para los campos de entrada */
+    border-radius: 5px; /* Borde redondeado con radio de 5px para los campos de entrada */
+    outline: none; /* Elimina el contorno al recibir el foco */
+    width: 100%; /* Ancho del 100% para los campos de entrada */
+}
+
+.info input[type="submit"] {
+    padding: .5rem 2rem; /* Relleno de 0.5rem arriba y abajo, 2rem a la izquierda y derecha para el botón de envío */
+    font-size: 1.8rem; /* Tamaño de fuente de 1.8rem para el botón de envío */
+    border-radius: 0; /* Borde sin redondear */
+}
+
+.footer {
+    text-align: center; /* Alineación centrada para el texto del pie de página */
+    background-color: var(--oscuro); /* Color de fondo oscuro definido por variable */
+    color: var(--blanco); /* Color de texto blanco definido por variable */
+    padding: 2rem; /* Relleno de 2rem en todas las direcciones */
+    font-size: 2rem; /* Tamaño de fuente de 2rem para el texto del pie de página */
+}
